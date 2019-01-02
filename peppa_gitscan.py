@@ -60,6 +60,3 @@ if __name__ == '__main__':
     scanner = GitScan(user='',pwd='')
     print(scanner.get())
 
-
-    # print(get(url = 'https://github.com/search?p=8&q=dianrong&type=Code'))
-
