@@ -56,21 +56,9 @@ class GitScan(object):
         return r.content
 
 
-
-
- # targetUrl="https://github.com/search?o=desc&p="+str(page)+"&q="+keyword+"%20in:file,path&ref=searchresults&s=indexed&type=Code&utf8=%E2%9C%93"
- #                req = login_request.get(targetUrl,timeout=10)
- #                                       # headers=headers,
- #                                   # proxies=proxy,
- #                if req.status_code==429 :    #429 too many requests
- #                    time.sleep(20)
- #                cur_par_html = BeautifulSoup(req.content, "lxml")
-                # print cur_par_html
-
 if __name__ == '__main__':
     scanner = GitScan(user='',pwd='')
     print(scanner.get())
 
 
-    # print(get(url = 'https://github.com/search?p=8&q=dianrong&type=Code'))
 
