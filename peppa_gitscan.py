@@ -6,10 +6,7 @@ import settings
 import requests
 
 log = logger.logger(__name__)
-TOKEN = settings.TOKEN
 per_page = 50
-
-
 
 
 class GitScan(object):
@@ -55,11 +52,39 @@ class GitScan(object):
             r = self.session.get(url, headers=header, params=params)
         return r.content
 
-    def process(self):
+    def process(self,page,keyword):
 
-        pass
+        html = etree.HTML(self.get(page=page,keyword=keyword))
+        block = html.xpath("//div[@class='code-list-item "
+                           "col-12 py-4 code-list-item-public ']")
+        print("[+] Info: get item: %i" % len(block))
+
+        print(block)
+
+        codes = html.xpath(
+            "//div[@class='code-list-item col-12 py-4 code-list-item-public ']"
+            "/div[@class='file-box blob-wrapper']/table[@class='highlight']"
+            "/tr/td[@class='blob-code blob-code-inner']")
+
+        print(codes)
+
+        nums = html.xpath(
+            "//div[@class='code-list-item col-12 py-4 code-list-item-public "
+            "']/div[@class='file-box blob-wrapper']/table[@class='"
+            "highlight']/tr/td[@class='blob-num']/a")
+
+        for i in range(len(nums)):
+            try:
+                text = etree.tostring(codes[i], method='text')
+                print(text)
+
+            except UnicodeEncodeError:
+
+                continue
+
+
 
 if __name__ == '__main__':
     scanner = GitScan(user='',pwd='')
-    print(scanner.get())
+    print(scanner.process(page=1,keyword='baidu'))
 

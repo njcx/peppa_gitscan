@@ -1,7 +1,7 @@
 rule_dict = {
 
     'rule_id_1':{
-        'company' : 'ali',
+        'company' : 'aliyun',
         'keyword' : ['','username','password', 'jdbc:mysql','jdbc:oracle',]
     }
 
