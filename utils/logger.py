@@ -13,14 +13,8 @@ class logger():
         logging.basicConfig(level=logging.INFO)
         self.log.addHandler(log_file_handler)
 
-    def critical(self, msg):
-        self.log.critical(msg)
-
     def error(self, msg):
         self.log.error(msg)
-
-    def warn(self, msg):
-        self.log.warning(msg)
 
     def info(self, msg):
         self.log.info(msg)
