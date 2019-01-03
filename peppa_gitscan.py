@@ -55,6 +55,9 @@ class GitScan(object):
             r = self.session.get(url, headers=header, params=params)
         return r.content
 
+    def process(self):
+
+        pass
 
 if __name__ == '__main__':
     scanner = GitScan(user='',pwd='')
